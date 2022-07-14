@@ -1,0 +1,39 @@
+{% extends  'videoapp.html' %}
+{% load static %}
+{% block content%}
+<style>
+
+</style>
+<main>
+    <section id="form-container">
+        <img src="{% static 'style/images/chat.png'%}" width="100">
+        <div>
+            <h1>Welcome to video chat</h1>
+            <p>A group video calling application for you</p>
+        </div>
+        <form id = "form">
+            <div class="form-field">
+                <input type="submit" value="Join Stream" / >
+                <a href="/login/home-login"/>go back</a>
+            </div>
+        </form>
+    </section>
+
+
+
+
+</main>
+<script type="text/javascript">
+    let form = document.getElementById('form')
+    let handleSubmit = async (e) => {
+        e.preventDefault()
+        window.open('/room/','_self')
+
+    } 
+    form.addEventListener('submit',handleSubmit)
+    
+</script>
+
+
+
+{% endblock content %}

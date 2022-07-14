@@ -1,0 +1,89 @@
+{% extends 'home_login.html'%}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditCaption -{{request.user.username}}</title>
+</head>
+<style>
+    .image {
+        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        left: 35%;
+        right: 30%;
+        position: relative;
+
+    }
+    .post {
+        justify-content: center;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin: 0;
+ 
+    }
+    .center {
+        position: absolute;
+        top: 1;
+        margin-top: -50px;
+    }
+    .all {
+        justify-content: center;
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    #button-34{
+                background: #19b3d3;
+                color: white;
+                box-shadow: 4px 4px white;
+                padding: 0 40px;
+                line-height: 42px;
+                display: inline-block;
+                border: 1px solid transparent;
+                font-size: 14px;
+                font-weight: 400;
+                letter-spacing: 2px;
+                transition: ease all 0.35s;
+                margin: 20px;
+     
+    }
+    #button-34:hover{
+                background: white;
+                color: #19b3d3;
+                box-shadow: 4px 4px #19b3d3;
+            }
+</style>
+<body class="container1">
+    <form method="POST" class="form">
+        {% csrf_token %}
+
+        <div class="post">
+            <h1 class="center">Edit Caption</h1>
+            {{form.post}}
+
+  
+
+         
+        </div>
+        <div class="image">
+            {{form.image}}
+        </div>
+
+        <div class="all">
+            <button class="submit" id="button-34">Save Changes</button>
+            <a href="{%url 'main:post-details' post.pk%}" style="position: relative; top: 26px; left: -10px;">Cancel</a>
+        </div>
+
+
+    </form>
+</body>
+</html>
+{% endblock content %}

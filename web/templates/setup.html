@@ -1,0 +1,200 @@
+<html>
+  <style>
+    .body{
+      font-family: 'Rubik', sans-serif;
+    }
+    body{margin-top:20px;
+
+    
+    }
+    .avatar{
+    width:150px;
+    height:100px;
+
+    }
+
+
+
+/* CSS */
+#button-34{
+            background: #19b3d3;
+            color: white;
+            box-shadow: 4px 4px white;
+            padding: 0 40px;
+            line-height: 42px;
+            display: inline-block;
+            border: 1px solid transparent;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            transition: ease all 0.35s;
+            margin: 20px;
+}
+#button-34:hover{
+            background: white;
+            color: #19b3d3;
+            box-shadow: 4px 4px #19b3d3;
+        }
+        .body {
+          background-color: #10101a;
+          color: white;
+        }
+        .side .bx-exit {
+          position: absolute;
+          top: 20;
+          left: 87%;
+          padding: 10;
+          font-size: 20px;
+        }
+</style>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<link rel = "stylesheet" href = "https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<body class="body">
+  <div class="container bootstrap snippets bootdey">
+
+
+
+    <h1 class="text-primary">Set-up Profile</h1>
+      <hr>
+
+
+  <div class="row">
+
+
+<form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+            <!-- left column -->
+            <div class="col-md-3">
+              <div class="text-center">
+                {% if user.avatar %}
+                <img src="{{request.user.avatar.url}}" class="avatar img-circle img-thumbnail" alt="avatar" width="400">
+                {% else %}
+                {% load static %}
+                <img src="{% static 'images/avatar.png' %}" class="avatar img-circle img-thumbnail" alt="avatar" width="400">
+                {% endif %}
+                <h6>Upload a different photo...</h6>
+
+                  {{form.avatar}}
+                  <h6>Describe Yourself</h6>
+                  {{form.bio}}
+
+   
+              </div>
+            </div>
+            
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+              <div class="alert alert-info alert-dismissable">
+                <a class="panel-close close" data-dismiss="alert"></a> 
+                <i class="fa fa-coffee"></i>
+              Welcome!<strong> {{request.user.name}}</strong>.Have a Great Time.
+              </div>
+              <h3>Personal info: </h3>
+              
+              <div class="form-horizontal" role="form">
+                {%  csrf_token%}
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Username:</label>
+                  <div class="col-lg-8">
+                    {{form.username}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Age:*</label>
+                  <div class="col-lg-8">
+                    {{form.age}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Email:</label>
+                  <div class="col-lg-8">
+                    {{form.email}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">First name:*</label>
+                  <div class="col-lg-8">
+                    {{form.name}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Last name:*</label>
+                  <div class="col-lg-8">
+                    {{form.last_name}}
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Status:*</label>
+                  <div class="col-lg-8" >
+                    {{form.status}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Gender:*</label>
+                  <div class="col-lg-8" >
+                    {{form.gender}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Birthday:*</label>
+                  <div class="col-lg-8" >
+                    {{form.birthday}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Home Town:*</label>
+                  <div class="col-lg-8" >
+                    {{form.location}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Studied At:*</label>
+                  <div class="col-lg-8" >
+                    {{form.school}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Facebook URL:</label>
+                  <div class="col-lg-8" >
+                    {{form.fb_url}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Instagram URL:</label>
+                  <div class="col-lg-8" >
+                    {{form.insta_url}}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Twitter URL:</label>
+                  <div class="col-lg-8" >
+                    {{form.twitter_url}}
+                  </div>
+                </div>
+          
+                <div class="form-group">
+                <label class="col-lg-3 control-label"></label>
+                <div class="col-lg-8" >
+                  <button class="submit" id="button-34">Save Changes</button>
+                  <a href="/profile/{{user.id}}">Cancel</a>
+                </div>
+               
+              </div>
+          
+            </div>
+  
+    </div>
+
+</form>
+<hr>
+
+
+  
+</body>
+      
+</html>

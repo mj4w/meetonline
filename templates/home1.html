@@ -1,0 +1,802 @@
+
+<!--BOX ICON gamitin mo para mas presentable yung icon sa website na gagawin mo-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect " href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo Mj.png'%}" />
+    <title>meetonline</title>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Rubik', sans-serif;
+        text-decoration: none;
+        list-style: none;
+        scroll-behavior: smooth;
+        scroll-padding-top: 2rem;
+
+    }
+    :root{
+        --bg-color: #10101a;
+        --main-color: #2fbf71;
+        --2nd-main-color: #ffffffcc;
+        --text-color:#fff;
+        --big-font: 5rem;
+        --h2-font: 1.9rem;
+        --p-font:1 rem;
+    }
+    body {
+        background:var(--bg-color);
+        color:var(--text-color);
+
+    }
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--bg-color);
+        padding: 24px 14%;
+        transition: .3s;
+    }
+    .logo {
+        color: var(--text-color);
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    span {
+        color: #19b3d3;
+    }
+    .navbar {
+        display: flex;
+        
+    }
+    .navbar a {
+        color: var(--text-color);
+        font-size: 1rem;
+        padding: 10px 20px;
+        font-weight: 500;
+    }
+    .navbar a:hover{
+        background: #19b3d3;
+        transition: .3s;
+    }
+    #menu-icon{
+        font-size: 28px;
+        z-index: 10001;
+        cursor: pointer;
+        display: none;
+
+    }
+    section {
+        padding: 190px;
+    }
+    .home {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 6rem;
+        align-items: center;
+        }
+    .home-img img{
+        max-width: 100%;
+        width: 600px;
+        height: auto;
+    }
+    .home-text h5{
+        color: var(--text-color);
+        font-size: 25px;
+        font-weight: 500;
+        margin: 0 0 20px;
+    }
+    .home-text h1{
+        font-size: var(--big-font);
+        color: var(--text-color);
+        font-weight: 700;
+        line-height: 1;
+        margin: 0 0 20px;
+    }
+    .home-text h6{
+        color: var(--text-color);
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 25px;
+
+    }
+    .home-text p{
+        max-width: 470px;
+        font-size: var(--p-font);
+        font-weight: 300;
+        line-height: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--2nd-main-color);
+    }
+    .btn {
+        background: #19b3d3;
+        color: var(--text-color);
+        box-shadow: 4px 4px var(--text-color);
+        padding: 0 25px;
+        line-height: 42px;
+        display: inline-block;
+        border: 1px solid transparent;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        transition: ease all 0.35s;
+        }
+    .btn:hover {
+        background: white;
+        color: #19b3d3;
+        box-shadow: 4px 4px #19b3d3;
+    }
+    .about{
+        display: grid;
+        grid-template-columns: repeat(2,2fr);
+        grid-gap: 5rem;
+        align-items: center;
+    }
+    .about-img img{
+        max-width: 100%;
+        width: 580px;
+        height: auto;
+    }
+    .about-text h3{
+        color: var(--text-color);
+        font-size: 30px;
+        font-weight: 300;
+        letter-spacing: 6px;
+        margin:0 0 30px;
+
+    }
+    .about-text h2{
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        font-size: var(--h2-font);
+        line-height: 1.2;
+        max-width: 470px;
+        margin-bottom: 2rem;
+
+    }
+    .about-text p{
+        max-width: 570px;
+        font-size: var(--p-font);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        line-height: 1.8rem;
+        color: var(--2nd-main-color);
+
+    }
+    .count{
+        margin-bottom: 2rem;
+
+    }
+    .about-text .count a{
+        color: var(--2nd-main-color);
+        margin-right: 20px;
+        word-spacing: 5px;
+    }
+    .count span{
+        color: var(--text-color);
+        font-size: 2.7rem;
+        font-weight: 600;
+    }
+    .main-btn .btn{
+        margin-right: 20px;
+
+    }
+    .center{
+        text-align: center;
+
+    }
+    /* alignment to center  responsive*/
+    .center h3{
+        color: var(--text-color);
+        font-size: 30px;
+        font-weight: 300;
+        letter-spacing: 6px;
+    }
+    /* for gridbox    */
+    .service-content{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+        grid-gap: 2rem;
+        align-items: center;
+        margin-top: 4.4rem;
+
+    }
+    /* for box alignment */
+    .row {
+        background: #0b0b13;
+        padding: 60px 35px;
+        border-radius: 5px;
+        cursor: pointer;
+        cursor: pointer;
+        transition: all .40s;
+    }   
+    .row i{
+        color:  #19b3d3;
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    .main-btn span h5{
+        padding: 10px;
+        margin: 5px;
+    }
+    .main-btn i {
+        color:#19b3d3 ;
+        font-size: 2rem;
+        margin-bottom: 50px;
+        padding-bottom: 30px;
+    }
+    .row h3 {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 20px;
+        color: var(--text-color);
+    }
+    .row p {
+        font-size: 18px;
+        color: var(--2nd-main-color);
+        list-style: 30px;
+    }
+    .row:hover{
+        transform: translateY(-15px);
+        box-shadow: 0px 15px 30px 0px rgb(0 0 0 / 70%);
+
+    }
+    .cta {
+        background: #0b0b13;
+        width: 100%;
+        padding: 150px 0 ;
+        text-align: center;
+        margin: 100px auto;
+    }
+    .cta h4{
+        color: var(--text-color);
+        font-size: 1.6rem;
+        font-weight: 300;
+        margin-bottom: 30px;
+    }
+    .cta h2{
+        color: var(--main-color);
+        font-size: 4rem;
+        font-weight: 300;
+        margin-bottom: 40px;
+    }
+    .resume-content{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+        grid-gap: 2rem;
+        align-items: center;
+        margin-top: 4.4rem;
+
+
+    }
+    .box {
+        background: #0b0b13;
+        padding: 40px 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        transform: all .40s;
+
+    }
+    .box h6{
+        color: #3e4455;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom:10px;
+    }
+    .box h4{
+        color: var(--text-color);
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 25px;
+        margin-bottom: 13px;
+    }
+    .box p{
+        font-size: var(--p-font);
+        font-weight: 300;
+        margin-bottom: 1.2rem;
+        line-height: 1.8rem;
+        color: var(--2nd-main-color);
+    }
+    .box h5{
+        font-size: 14px;
+        font-weight: 500;
+        color:var(--2nd-main-color);
+    }
+    .contact-form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4.2rem;
+
+    }
+    .contact-form form{
+        position: relative;
+        width: 550px;
+
+    }
+    /*center text area */
+    form input,
+    form textarea{
+        width: 100%;
+        padding: 20px;
+        border: none;
+        outline: none;
+        background: #0b0b13;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+    }
+    form input::placeholder,
+    form textarea::placeholder{
+        color: var(--2nd-main-color);
+
+    }
+    textarea{
+        /* resize none to make not visible the resize*/
+        resize: none;
+        height: 200px;
+    }
+    form .send-btn{
+        background: #19b3d3;
+        color: var(--text-color);
+        box-shadow: 4px 4px var(--text-color);
+        padding: 0 25px;
+        line-height: 42px;
+        display: inline-block;
+        border: 1px solid transparent;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        transition: ease all 0.35s;
+        cursor: pointer;
+
+
+    }
+    form .send-btn:hover{
+        background: white;
+        color: #19b3d3;
+        box-shadow: 4px 4px #19b3d3;
+    }
+    .copyright{
+        text-align: center;
+        padding: 30px;
+        color: var(--2nd-main-color);
+        background: #0b0b13;
+        margin-top: 3rem;
+        line-height: 1.8rem;
+    }
+ 
+    @media (max-width: 1430px){
+        header{
+            padding: 25px 3%;
+
+        }
+        section{
+            padding: 50px 3%;
+        }
+        :root{
+            --big-font: 3rem;
+            --h2-font:1.2rem;
+
+        }
+    }
+    @media (max-width: 1020px) {
+        :root {
+            --big-font:3rem;
+            --h2-font: 1.2rem;
+            --p-font: 0.9rem;
+        }
+        .home {
+            height: 80vh;
+        }
+
+        
+    }
+    @media (max-width: 830px) {
+        header{
+            padding: 18px 3%;
+        }
+        #menu-icon {
+            display: block;
+        }
+        .navbar {
+            position: absolute;
+            top: -500px;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            background: #0b0b13;
+            box-shadow: 0 15px 30px 0px rgb(0 0 0 /70%);
+            text-align: left;
+            transition: 0.2s ease;
+        }
+        .navbar a{
+            display: block;
+            padding: 1rem;
+            border-left: 2px solid #19b3d3;
+            margin: 1rem;
+
+
+        }
+        .navbar.active {
+            top:100%;
+        }
+
+        
+    }
+    @media (max-width: 795px){
+        .home {
+            grid-template-columns: 1fr;
+            grid-gap: 2rem;
+            text-align: center;
+            margin-top: 80px;
+            height: 100vh;
+        }
+        .home-text p {
+            max-width: 100%;
+        }
+
+        .home-img img{
+            max-width: 100%;
+            height: auto;
+            width: 490px;
+        }
+        .about {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .about-text h2{
+            max-width: 100%;
+        }
+        .about-text p{
+            max-width: 100%;
+        }
+        .about-img{
+            order: 5;
+            height: auto;
+            width: 450px;
+        }
+
+
+    }
+    /*slideshow image */
+    /* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #0b0b13;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+   
+</style>
+
+</head>
+<body>
+
+    <!--Header-->
+    <header>
+        <a href="#" class="logo">Meet<span>Online</span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="/login">Log-in</a></li>
+            <li><a href="#services">Reminders</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+
+
+    </header>
+    <!--home-->
+    <section class="home " id="home"> 
+        <div class="home-text">
+            {% block content%}
+            <h5 ></h5>
+            {% endblock content%}
+            <h1>Welcome to Social <span>Feed</span></h1>
+         
+            <p>Connect people and meet them online!</p>
+            <a href="/sign-up" class="btn">Sign-up</a>
+        </div>
+        <div class="home-img">
+            {% load static %}
+       
+            <div class="slideshow-container">
+
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 3</div>
+                    <img src="{% static 'images/image1.jpg'%}" alt="image">
+                  <!-- <div class="text">Caption Text</div> -->
+                </div>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 3</div>
+                  
+            <img src="{% static 'images/image2.jpg'%}" alt="image">
+                  <!-- <div class="text">Caption Two</div> -->
+                </div>
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">3 / 3</div>
+                  
+            <img src="{% static 'images/image3.jpg'%}" alt="image">
+                  <!-- <div class="text">Caption Three</div> -->
+                </div>
+            </div>
+            <div style="text-align:center">
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+              </div>
+              
+            
+        </div>
+
+  
+    </section>
+   
+    <!--services-->
+    <section class="services" id="services">
+        <div class="center">
+            <h3>Reminders!</h3>
+
+        </div>
+        <div class="service-content">
+            <div class="row">
+
+                <h3>You can Post , Whatever you want </h3>
+                <p>Free open world website that can express your emotion by posting.</p>
+            </div>
+            <div class="row">
+ 
+                <h3>Login is Required</h3>
+                <p>Before you can stalk, post, comment , chat etc . You must need to Login and if you have no account , then Sign-up </p>
+            </div>
+            <div class="row">
+     
+                <h3>Chat Area</h3>
+                <p>I build chat room in Django but with no Websockets, to chat continouos on people online you need to reload the page.</p>
+            </div>
+            <div class= "row">
+        
+                <h3>Enjoy!</h3>
+                <p>I hope you enjoy using my website, if theres something bug , free to contact me below.</p>
+            </div>
+     
+        </div>
+    </section>
+    <!--cta-->
+    <section class="cta" style="display: block;">
+   
+        <h2>Coming Soon!</h2>
+        <p>-> Adding Following & Followers</p>
+        <br>
+        <p>-> Realtime Chatroom and Video Room </p>
+        <br>
+        <p>-> Able to search for Partners by your likes</p>
+        <br>
+        <p>-> Direct Message to the User</p>
+        <br>
+        <p>-> Adding Location</p>
+        <br>
+        <p>-> Adding Forgot Password</p>
+        <br>
+        <p>-> Email Verification before Login</p>
+        <br>
+        <p>-> Adding Tags in post</p>
+      
+        <br>
+        <h3>Many More!! Enjoy  &#128516; </h3>
+
+    </section>
+    <!-- resume
+    <section class="resume" id="resume">
+        <div class="center">
+            <h3>Experience</h3>
+        </div>
+        <div class="resume-content">
+            <div class="box">
+                <h6>March</h6>
+                <h4>Web</h4>
+                <p>Loremisdsd</p>
+                <h5>Philippines</h5>
+            </div>
+            <div class="box">
+                <h6>March</h6>
+                <h4>Web</h4>
+                <p>Loremisdsd</p>
+                <h5>Philippines</h5>
+            </div>
+            <div class="box">
+                <h6>March</h6>
+                <h4>Web</h4>
+                <p>Loremisdsd</p>
+                <h5>Philippines</h5>
+            </div>
+        </div>
+    </section> -->
+    <!--contact-->
+     <!--About Info-->
+     <section class="about " id="about">
+        <div class="about-img">
+            {% load static%}
+            <img src="{% static 'images/about.jpg'%}" alt="image" style="border-radius: 5em;">
+        </div>
+        <div class="about-text">
+            <h3>About</h3>
+            <h2>You need to Know</h2>
+            <p>Hello! I am the owner of this Website, My name is <strong>Marcel James V. Aribal</strong>, from San Francisco Bulacan, Bulakan.
+                I am 19 Years old and taking of Bachelor of Science in Computer Engineering. My favorite programming language is Python. Special 
+                Thanks to StackOverflow, DJango_Documentation, DennisIvy on YT, W3SCHOOL for HTML & CSS, Bootstrap and Lastly on Legion Script YT.
+            </p>
+        
+            <div class="main-btn">
+                <a href="/see-info/1" class="btn">View Profile</a>
+                <span><h5>Social Apps</h5></span>
+                <i class='bx bxl-facebook-square' ></i>
+                <i class='bx bxl-instagram-alt' ></i>
+                <i class='bx bxl-twitter' ></i>
+                <i class='bx bxl-github'></i>
+                <i class='bx bxl-tiktok' ></i>
+            </div>
+
+        </div>
+    </section>
+    <section class="contact" id= "contact">
+        <div class="center">
+            <h3>Message Me!</h3>
+        </div>
+        <div class="contact-form">
+            <form action = "" method = "POST">
+                {% csrf_token%}
+                {{form.name}}
+                {{form.email}}
+                {{form.content}}
+                <input type="submit" name="" value="Send" class="send-btn">
+            </form>
+
+        </div>
+    </section>
+    <!--copyright-->
+    <div class="copyright">
+        <p>TO GOD BE ALL THE GLORY 
+        {% load static %}
+        <img src="{% static 'images/pmcc.png' %}" alt="" width="40"/>
+    </p>
+    </div>
+
+</body>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+    let menu = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+    menu.onclick = () => {
+        menu.classList.toggle('bx-x');
+        navbar.classList.toggle('active');
+    };
+    window.onscroll = () => {
+        menu.classList.remove('bx-x');
+        navbar.classList.remove('active');
+    };
+    const sr= ScrollReveal ({
+        distance: '60px',
+        duration: 1000,
+        reset: true
+    })
+    sr.reveal('.home-text',{delay:200, origin:'top'})
+    sr.reveal('.home-img',{delay:400, origin:'top'})
+    sr.reveal('.about,.services, .cta, .resume, .contact, .copyright',{delay:200, origin:'top'})
+
+
+    let slideIndex = 0;
+
+
+    showSlides();
+    //slideshow image
+    function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

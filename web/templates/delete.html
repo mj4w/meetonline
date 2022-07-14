@@ -1,0 +1,10 @@
+{% extends 'home_login.html '%}
+{% block content%}
+<form method = "POST" action = "">
+    {% csrf_token %}
+    <p>Are you sure do you want to delete "{{forms}}" ?</p>
+    <a href = '{{request.META.HTTP_REFERER}}'>Go back</a> <!--this request meta data going back in page that u been-->
+    <input type = "submit" value = "Confirm" />
+    
+</form>
+{% endblock content%}

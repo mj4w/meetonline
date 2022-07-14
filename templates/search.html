@@ -1,0 +1,19 @@
+{% extends 'home_login.html' %}
+
+{% block content %}
+<h2>Search Result...</h2>
+{% if not post %}
+    <h2>No Result Found</h2>
+{% else %}
+        {% for users in post%}
+
+            <div class="box">
+                <img src="{{users.avatar.url}}" alt="image">
+                <h3>{{users.name}}</h3>
+                <p>{{users.bio}}</p>
+                <a href="/see-info/{{users.id}}" class="btn">See Profile</a>
+
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock content%}

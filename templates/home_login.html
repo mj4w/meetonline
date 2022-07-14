@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel = "stylesheet" href = "https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect " href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+    /*active in sidebar is kinda do in javascript and adopt in css*/
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Rubik", sans-serif;
+    }
+
+    body {
+        position: relative;
+        min-height: 100vh;
+        width: 100%;
+        overflow-y: scroll;
+
+
+        
+    }
+    .sidebar {
+        position: fixed;
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 78px;
+        background: #10101a;
+        padding: 6px 14px;
+        transition: all 0.5s ease;
+        z-index: 1000;
+    }
+    .sidebar.active {
+        width: 240px;
+
+    }
+    .sidebar.active .profile_content .profile {
+        background: none;
+    }
+    .sidebar .logo_content .logo {
+        color: #fff;
+        display: flex;
+        height: 50px;
+        width: 100%;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .logo_content .logo {
+        opacity: 1;
+        pointer-events: none;
+    }
+    .logo_content .logo img {
+        font-size: 28px;
+        margin-right: 5px;
+    }
+    .logo_content .logo .logo_name {
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .sidebar #btn {
+        position: absolute;
+        color: #fff;
+        top: 6px;
+        left: 50%;
+        font-size: 20px;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 50px;
+        transform: translateX(-50%);
+    }
+    .sidebar.active #btn {
+        left: 90%;
+
+
+    }
+    .sidebar ul{
+        margin-top: 20px ;
+
+    }
+    .sidebar ul li {
+        position: relative;
+        height: 50px;
+        width: 100%;
+        margin: 0 5px;
+        list-style: none;
+        line-height: 50px;
+
+    }
+    /* tool tip for showing text in hover*/
+    .sidebar ul li .tooltip{
+        position: absolute;
+        left: 122px;
+        top: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 6px;
+        height: 35px;
+        width: 122px;
+        background: #fff;
+        line-height: 35px;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        transition: 0s;
+        opacity: 0;
+        pointer-events: none;
+        display: block;
+
+
+    }
+    .sidebar.active ul li .tooltip{
+        display:none;
+
+    }
+    /* to hover effects */
+    .sidebar ul li:hover .tooltip{
+        transition: all 0.5s ease;
+        top:50%;
+        opacity: 1;
+
+    }
+    .sidebar ul li input{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 12px;
+        outline: none;
+        border: none;
+        background: #1d1b31;
+        padding-left: 50px;
+        font-size: 18px;
+        color: #fff;
+    }
+    .sidebar ul li .bx-search {
+        position: absolute;
+        z-index: 99;
+        color: #fff;
+        font-size: 22px;
+        transition: all 0.5 ease;
+    }
+    .sidebar ul li .bx-search:hover{
+        background: #fff;
+        color: #1d1b31;
+
+
+    }
+    .sidebar ul li a {
+        color: #fff;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: all 0.4s ease;
+        border-radius: 12px;
+        white-space: nowrap;
+
+
+    }
+    .sidebar ul li a:hover{
+        color:  #19b3d3;
+        background: #1d1b31;
+    }
+    .sidebar ul li i{
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .sidebar .links_name {
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+    }
+    .sidebar.active .links_name {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .sidebar .profile_content {
+        position: absolute;
+        color: #fff;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+    }
+    .sidebar .profile_content .profile{
+        position: relative;
+        padding: 10px 6px;
+        height: 60px;
+        background: none;
+        transition: all 0.4s ease;
+
+
+    }
+    .sidebar.active .profile_content .profile{
+        background: #1d1b31;
+    }
+    .profile_content .profile .profile_details {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        white-space: nowrap;
+
+    }
+    .sidebar.active .profile .profile_details{
+        opacity: 1;
+        pointer-events: auto;
+
+    }
+    .profile .profile_details img{
+        height: 45px;
+        width: 45px;
+        object-fit: cover;
+        border-radius: 12px;
+
+    }
+    .profile .profile_details .name_job{
+        margin-left: 10px ;
+
+    }
+    .profile .profile_details .name {
+        font-size: 15px;
+        font-weight: 400;
+    }
+    .profile .profile_details .job {
+        font-size: 12px;
+    }
+    .profile #log-out {
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 50px;
+        line-height: 50px;
+        font-size: 20px;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.4s ease;
+        background:#10101a ;
+    }
+    .sidebar.active .profile #log-out {
+        left: 88%;
+
+    }
+    .sidebar.active .profile #log-out{
+        background: none;
+
+
+    }
+    .home_content {
+        position: absolute;
+        height: 100%;
+        width: calc(100% - 78px);
+        left: 78px;
+        transition: all 0.5s ease;
+    }
+    .home_content .text{
+        font-size: 25px;
+        font-weight: 500;
+        color: #10101a;
+        margin: 12px;
+    }
+    .sidebar.active ~ .home_content {
+        width: calc(100%-240px);
+        left: 240px;
+
+
+    }
+    .home_content i{
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+        text-align: center;
+    }
+    .sidebar .logo_content .logo span{
+        color:  #19b3d3;
+    }
+    #myBtn i:hover{
+        color: #19b3d3;
+        border: 1px solid #19b3d3;
+    }
+    .home_content legend {
+        height: 50px;
+        min-width: 50px;
+        border-radius: 12px;
+        line-height: 50px;
+    }
+    /* for grid alignment */
+    .container {
+        display: grid;
+        gap:15px;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
+    .box {
+        padding: 20px;
+        text-align: center;
+        border-radius: 5px;
+        background:rgb(255, 255, 255);
+        box-shadow: 0px 5px 10px rgba(0, 0,0, 0.2);
+    }
+    .box img {
+        height: 70px;
+
+    }
+    .box h3{
+        color: #444;
+        padding: 10px 0;
+        font-size: 20px;
+    }
+    .box p {
+        color: #777;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    .btn {
+        background: #19b3d3;
+        color: white;
+        box-shadow: 4px 4px white;
+        padding: 0 40px;
+        line-height: 42px;
+        display: inline-block;
+        border: 1px solid transparent;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        transition: ease all 0.35s;
+        margin: 20px;
+    }
+    .btn:hover {
+        background: white;
+        color: #19b3d3;
+        box-shadow: 4px 4px #19b3d3;
+    }
+    .box:hover{
+        transform: scale(1.03);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        transition: 0.5s;
+
+    }
+    @media (max-width:770px){
+        .wrapper {
+            padding:20px;
+        }
+    }
+    .wrapper {
+        margin: 10px auto;
+        padding: 0 10%;
+        padding-bottom: 10px;
+ 
+
+    }
+    .wrapper h2{
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        text-align: center;
+        padding-bottom: 15px;
+        text-shadow: 0 15px 10px rgba(0,0,0,0.2);
+    }
+    .gender{
+        position: absolute;
+        border-radius: 50%;
+        background: rgb(0, 0, 0);
+        color: white;
+        padding: 10px;
+        opacity: 30%;
+
+    /* for terms and condition */
+    }
+    .report {
+        position: relative;
+        left: 45%;
+        border: 50%;
+        font-size: 25px;
+        color: #f32013;
+  
+
+    }
+    .popup .overlay {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.7);
+        z-index: 1;
+        display: none;
+    }
+    .popup .content {
+        border: 4px solid  #19b3d3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #fff;
+        width: 400px;
+        height: 740px ;
+        z-index: 1;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        }
+    .popup .close-btn{
+        cursor: pointer;
+        position: absolute;
+        
+        right: 10px;
+        top: 40px;
+        width: 30px;
+        height: 30px;
+        background: #222;
+        color: #fff;
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+
+    }
+    .popup.active .overlay{
+        display:block;
+
+    }
+    .popup.active .content {
+        transition: all 300ms ease-in-out;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+</style>
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                {% load static %}
+                <img src="{% static 'style/images/logo Mj.png' %}" width="50" />
+                <div class="logo_name">Meet<span>Online</span></div>
+            </div>
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <i class='bx bx-search' ></i>
+                <form method="GET" action="{% url 'main:searched' %}">
+                    {% csrf_token %}
+         
+
+                    <input class="form-control me-2" type="search" placeholder="Search for names" aria-label="Search " name="searched">
+             
+                </form>
+            </li>
+            <li>
+                <a href="/login/home-login">
+                    <i class='bx bxs-info-circle'></i>
+                    <span class="links_name">Information</span>
+                </a>
+                <span class="tooltip">Information</span>
+            </li>
+            <li>
+                <a href="{% url 'main:inbox'%}">
+                    <i class='bx bxs-chat' ></i>
+                    <span class="links_name">Message</span>
+                </a>
+                <span class="tooltip">Message</span>
+            </li>
+            <li>
+                <a href="{% url 'main:profile' request.user.id %}">
+                    <i class='bx bxs-user'></i>
+                    <span class="links_name">Profile Info</span>
+                </a>
+                <span class="tooltip">Profie Info</span>
+            </li>
+            <li>
+                <a href="/lobby">
+                    <i class='bx bxs-video-recording' ></i>
+                    <span class="links_name">Video Room</span>
+                </a>
+                <span class="tooltip">Video Room</span>
+            </li>
+            <li>
+                <a href="/post-list">
+                    <i class='bx bx-paper-plane'></i>
+                    <span class="links_name">Post Page</span>
+                </a>
+                <span class="tooltip">Post Page</span>
+            </li>
+        
+        </ul>
+        
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    {%if request.user.avatar.url %}
+                    <img src= "{{request.user.avatar.url}}" alt="Avatar" class="rounded-circle account-img " width="90" height="80" />
+                {% else %}
+                    {% load static %}
+                    <img src="{% static 'images/avatar.png' %}" alt="Avatar" class="rounded-circle account-img " width="90" height="80" />
+                {% endif %} 
+                    <div class="name_job">
+                        <div class="name"><a href="{% url 'main:profile' request.user.id %}" style="color:white;"> {{request.user.username}}</a></div>
+                        <div class="job">{{request.user.status}}</div>
+                    </div>
+                </div>
+                <a href="/logout" style="color: white;"> <i class="bx bx-log-out" id ='log-out'></i></a>
+               
+            </div>
+        </div>
+    </div>
+    <div class="home_content">
+        {% load custom_tags%}
+        <div class="popup" id="popup-1">
+            <div class="overlay"></div>
+            <div class="content">
+                <div class="close-btn" onclick="togglePopup()">&times;</div>
+                <br>
+                <h1>Hello There!</h1>
+
+                <strong>Features</strong>
+                <hr>
+                They have 5 links in this website first is 
+                <strong>Information</strong> this will allocate all users login, and you can visit them by clicking /see-profile.
+                <br>
+                <strong>Message</strong> this will able to chat them by typing their username.
+                <br>
+                <strong>Profile Info</strong> this will allocate users profile, you can edit or delete your account.
+                <br>
+                <strong>Video Room</strong> i will activate it by using Agora Token but its a limited time , i will send you a notification or a message
+                if its ready to use.
+                <br>
+                <strong>Post Page</strong> post what you want , express your feeling or posting your images online , you can like post, comment, like a comment,
+                or even edit the post and delete the post. Ps.<strong>You can select multiple images to post!</strong>
+                <h5 style="position: absolute;"></h5>
+                <hr>
+                <strong>Reporting Account</strong>
+                <hr>
+  
+
+               
+              
+                This is my 2nd website i create , if they have suspicious or malicious post by the user <strong>report this immediately
+                    in the homepage.</strong>by simply clicking the danger icon, if i receive 5 or more reports according in his behaviour,
+                    i will automatically delete his account.
+                <hr>
+             
+            </div>
+        </div>
+        <button onclick="togglePopup()" style="background: rgb(162, 212, 162); font-size: 20px; border: none; margin: 20px;" >Terms & Conditions</button>
+        <legend><i class='bx bxs-bell-ring'></i>{% show_notifications %}</legend>
+    
+    <!--Javascript -->
+    <div class="wrapper">
+{% block content %}
+        <title>HomePage</title>
+        {%for msg in messages%}
+        <div class="alert alert-success" role="alert">
+        Welcome!  <strong>{{request.user.username}}</strong>
+        </div>
+        {%endfor%}
+        <h2>{{user|length}} participant</h2>
+        <div class="container">
+
+            {% for users in user%}
+                <div class="box">
+                    <div class="gender">
+                        {% if users.gender%}
+                        {{users.gender}}
+                        {% else %}
+
+                        {% endif %}
+                    </div>
+                    <div class="box1">
+                        <div class="report">
+                          <a href="{% url 'main:report' %}" style="color: #f32013;"> &#9888; </a> 
+                        </div>
+                    
+                    </div>
+                    
+                    <img src="{{users.avatar.url}}" alt="image">
+                    <h3>{{users.name}} {{users.last_name}}</h3>
+                    <p style="font-weight: 400;">@{{users.username}}</p>
+                    <p>{{users.bio}}</p>
+                    <a href="/see-info/{{users.id}}" class="btn">See Profile</a>
+           
+                </div>
+            {% endfor %}
+{% endblock content %}
+            </div>
+        </div>
+        
+        </div>
+    <script>
+        let btn1 = document.querySelector("#btn");
+        let sidebar = document.querySelector(".sidebar");
+        btn1.onclick = function () {
+            sidebar.classList.toggle("active")
+
+        }
+        function togglePopup(){
+            document.getElementById("popup-1").classList.toggle("active")
+        };
+
+
+    </script>
+  
+    
+</body>
+</html>
+
+
+

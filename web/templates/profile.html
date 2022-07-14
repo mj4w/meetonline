@@ -1,0 +1,1180 @@
+{% extends 'home_login.html' %}
+<!-- <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+  </head>
+  <style>
+    html *{
+      -webkit-font-smoothing: antialiased;
+  }
+  
+  .h6, h6 {
+      font-size: .75rem !important;
+      font-weight: 500;
+      font-family: Roboto,Helvetica,Arial,sans-serif;
+      line-height: 1.5em;
+  
+  }
+  
+  .name h6 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+  
+  .navbar {
+      border: 0;
+      border-radius: 3px;
+      padding: .625rem 0;
+      margin-bottom: 20px;
+      color: rgb(0, 0, 0);
+      background-color: #fff!important;
+      box-shadow: 0 4px 18px 0 rgba(0,0,0,.12), 0 7px 10px -5px rgba(0,0,0,.15) !important;
+      z-index: 1000 !important;
+      transition: all 150ms ease 0s;
+      
+  }
+  
+  .navbar.navbar-transparent {
+      z-index: 1030;
+      background-color: transparent!important;
+      box-shadow: none !important;
+      padding-top: 25px;
+      color: #fff;
+  }
+  
+  .navbar .navbar-brand {
+      position: relative;
+      color: inherit;
+      height: 50px;
+      font-size: 1.125rem;
+      line-height: 30px;
+      padding: .625rem 0;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+  }
+  
+  .navbar .navbar-nav .nav-item .nav-link:not(.btn) .material-icons {
+      margin-top: -7px;
+      top: 3px;
+      position: relative;
+      margin-right: 3px;
+  }
+  
+  .navbar .navbar-nav .nav-item .nav-link .material-icons {
+      font-size: 1.25rem;
+      max-width: 24px;
+      margin-top: -1.1em;
+  }
+  
+  .navbar .navbar-nav .nav-item .nav-link .fa, .navbar .navbar-nav .nav-item .nav-link .material-icons {
+      font-size: 1.25rem;
+      max-width: 24px;
+      margin-top: 0px;
+  }
+  
+  .navbar .navbar-nav .nav-item .nav-link {
+      position: relative;
+      color: inherit;
+      padding: .9375rem;
+      font-weight: 400;
+      font-size: 12px;
+      border-radius: 3px;
+      line-height: 20px;
+  }
+  
+  a .material-icons {
+      vertical-align: middle;
+  }
+  
+  .fixed-top {
+      position: fixed;
+      z-index: 1030;
+      left: 0;
+      right: 0;
+  }
+  
+  .profile-page .page-header {
+      height: 380px;
+      background-position:center;
+  }
+  
+  .page-header {
+      height: 100vh;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      display: flex;
+      align-items: center;
+  }
+  
+  .header-filter:after, .header-filter:before {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      display: block;
+      left: 0;
+      top: 0;
+      content: "";
+  }
+  
+  .header-filter::before {
+      background: rgba(0,0,0,.5);
+  }
+  
+  .main-raised {
+      margin: -60px 30px 0;
+      border-radius: 6px;
+      box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+  }
+  
+  .main {
+      border: 10px #6954b4 solid;
+      background: #FFF;
+      position: relative;
+      z-index: 3;
+  }
+  
+  .profile-page .profile {
+      text-align: center;
+  }
+  
+  .profile-page .profile img {
+      max-width: 160px;
+      width: 100%;
+      margin: 0 auto;
+      -webkit-transform: translate3d(0,-50%,0);
+      -moz-transform: translate3d(0,-50%,0);
+      -o-transform: translate3d(0,-50%,0);
+      -ms-transform: translate3d(0,-50%,0);
+      transform: translate3d(0,-50%,0);
+  }
+  
+  .img-raised {
+      box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+  }
+  
+  .rounded-circle {
+      border-radius: 50%!important;
+  }
+  
+  .img-fluid, .img-thumbnail {
+      max-width: 100%;
+      height: auto;
+  }
+  
+  .title {
+      margin-top: 30px;
+      margin-bottom: 25px;
+      min-height: 32px;
+      color: #3C4858;
+      font-weight: 700;
+      font-family: "Roboto Slab","Times New Roman",serif;
+  }
+  
+  .profile-page .description {
+      margin: 1.071rem auto 0;
+      max-width: 600px;
+      color: rgb(0, 0, 0);
+      font-weight: 300;
+  }
+  
+  p {
+      font-size: 14px;
+      margin: 0 0 10px;
+  }
+  
+  .profile-page .profile-tabs {
+      margin-top: 4.284rem;
+  }
+  
+  .nav-pills, .nav-tabs {
+      border: 0;
+      border-radius: 3px;
+      padding: 0 15px;
+  }
+  
+  .nav .nav-item {
+      position: relative;
+      margin: 0 2px;
+  }
+  
+  .nav-pills.nav-pills-icons .nav-item .nav-link {
+      border-radius: 4px;
+  }
+  
+  .nav-pills .nav-item .nav-link.active {
+      color: #fff;
+      background-color: #9c27b0;
+      box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+  }
+  
+  .nav-pills .nav-item .nav-link {
+      line-height: 24px;
+      font-size: 12px;
+      font-weight: 500;
+      min-width: 100px;
+      color: rgb(0, 0, 0);
+      transition: all .3s;
+      border-radius: 30px;
+      padding: 10px 15px;
+      text-align: center;
+  }
+  
+  .nav-pills .nav-item .nav-link:not(.active):hover {
+      background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .nav-pills .nav-item i {
+      display: block;
+      font-size: 30px;
+      padding: 15px 0;
+  }
+  
+  .tab-space {
+      padding: 20px 0 50px;
+  }
+  
+  .profile-page .gallery {
+      margin-top: 3.213rem;
+      padding-bottom: 50px;
+  }
+  
+  .profile-page .gallery img {
+      width: 100%;
+      margin-bottom: 2.142rem;
+  }
+  
+  .profile-page .profile .name{
+      margin-top: -80px;
+  }
+  
+  img.rounded {
+      border-radius: 6px!important;
+  }
+  
+  .tab-content>.active {
+      display: block;
+  }
+  
+  /*buttons*/
+  .btn {
+      position: relative;
+      padding: 12px 30px;
+      margin: .3125rem 1px;
+      font-size: .75rem;
+      font-weight: 400;
+      line-height: 1.428571;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      border: 0;
+      border-radius: .2rem;
+      outline: 0;
+      transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
+      will-change: box-shadow,transform;
+  }
+  
+  .btn.btn-just-icon {
+      font-size: 20px;
+      height: 41px;
+      min-width: 41px;
+      width: 41px;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      line-height: 41px;
+  }
+  
+  .btn.btn-just-icon fa{
+      margin-top: 0;
+      position: absolute;
+      width: 100%;
+      transform: none;
+      left: 0;
+      top: 0;
+      height: 100%;
+      line-height: 41px;
+      font-size: 20px;
+  }
+  .btn.btn-link{
+      background-color: transparent;
+      color: #999;
+  }
+  
+  /* dropdown */
+  
+  
+  
+  
+  .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      float: left;
+      min-width: 11rem !important;
+      margin: .125rem 0 0;
+      font-size: 1rem;
+      color: #212529;
+      text-align: left;
+      background-color: #fff;
+      background-clip: padding-box;
+      border-radius: .25rem;
+      transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
+  }
+  
+  .dropdown-menu.show{
+      transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
+  }
+  
+  
+  .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover, .dropdown-menu a:active, .dropdown-menu a:focus, .dropdown-menu a:hover {
+      box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
+      background-color: #9c27b0;
+      color: #FFF;
+  }
+  .show .dropdown-toggle:after {
+      transform: rotate(180deg);
+  }
+  
+  .dropdown-toggle:after {
+      will-change: transform;
+      transition: transform .15s linear;
+  }
+  
+  
+  .dropdown-menu .dropdown-item, .dropdown-menu li>a {
+      position: relative;
+      width: auto;
+      display: flex;
+      flex-flow: nowrap;
+      align-items: center;
+      color: #333;
+      font-weight: 400;
+      text-decoration: none;
+      font-size: .8125rem;
+      border-radius: .125rem;
+      margin: 0 .3125rem;
+      transition: all .15s linear;
+      min-width: 7rem;
+      padding: 0.625rem 1.25rem;
+      min-height: 1rem !important;
+      overflow: hidden;
+      line-height: 1.428571;
+      text-overflow: ellipsis;
+      word-wrap: break-word;
+  }
+  
+  .dropdown-menu.dropdown-with-icons .dropdown-item {
+      padding: .75rem 1.25rem .75rem .75rem;
+  }
+  
+  .dropdown-menu.dropdown-with-icons .dropdown-item .material-icons {
+      vertical-align: middle;
+      font-size: 24px;
+      position: relative;
+      margin-top: -4px;
+      top: 1px;
+      margin-right: 12px;
+      opacity: .5;
+  }
+  
+  /* footer */
+  
+  footer{
+      margin-top: 10px;
+      color: rgb(8, 8, 8);
+      padding: 25px;
+      font-weight: 300;
+      
+  }
+  .footer p{
+      margin-bottom: 0;
+      font-size: 14px;
+      margin: 0 0 10px;
+      font-weight: 300;
+  }
+  footer p a{
+      color: rgb(0, 0, 0);
+      font-weight: 400;
+  }
+  
+  footer p a:hover {
+      color: #9f26aa;
+      text-decoration: none;
+  }
+  body {
+    background: black;
+  }
+    
+  </style>
+  
+  <body class="profile-page">
+    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg "  color-on-scroll="100"  id="sectionsNav">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/login/home-login">Go back</a>
+                <a class="navbar-brand" href="/set-up">Set-up Profile</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+         
+        
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    </li>
+              <li class="nav-item">
+                <a class="nav-link" >
+                  <i class="material-icons"></i>
+                  Social Media
+                </a>
+              </li>
+              <li class="nav-item">
+                {% if request.user.twitter_url %}
+                <a class="nav-link" href="{{request.user.twitter_url}}" target="_blank">
+                  <i class="fa fa-twitter"></i>
+                {% endif %}
+                </a>
+              </li>
+              <li class="nav-item">
+                {% if request.user.fb_url %}
+                <a class="nav-link" href="{{request.user.fb_url}}" target="_blank">
+                  <i class="fa fa-facebook-square"></i>
+                </a>
+                {% endif %}
+              </li>
+              <li class="nav-item">
+                {% if request.user.insta_url %}
+                <a class="nav-link"  href="{{request.user.insta_url}}" target="_blank">
+                  <i class="fa fa-instagram"></i>
+                {% endif %}
+                </a>
+              </li>
+                </ul>
+            </div>
+        </div>
+    </nav>  
+
+    
+    <div class="page-header header-filter" data-parallax="true" ></div>
+    <div class="main main-raised">
+    <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                  <div class="col-md-6 ml-auto mr-auto">
+                     <div class="profile">
+                          <div class="avatar">
+                          {%if user.avatar%}
+                            <img class="round" src="{{request.user.avatar.url}}" alt="user" width="170" height="150" style="border-radius: 50%;"/>
+                            {% else %}
+                            {% load static %}
+                            <img src="{% static 'images/avatar.png' %}" class = "round" alt="user" width="170" height="150" style="border-radius: 50%;"/>
+
+                        {%endif%}
+                           
+
+                        </div>
+            
+                          <div class="name">
+                              <h2 class="title">{{request.user.name}} {{request.user.last_name}}</h2>
+                  
+           
+                <h5>{{request.user.email}}</h5>
+                {% if request.user.twitter_url %}
+                <a href="{{request.user.twitter_url}}" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-twitter"></i></a>
+                {%endif%}   
+                {% if request.user.fb_url %}        
+                <a href="{{request.user.fb_url}}" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-facebook-square"></i></a>
+                {% endif %}
+                {% if request.user.insta_url %}            
+                <a href="{{request.user.insta_url}}" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-instagram"></i></a>
+                {% endif %}        
+              </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="description text-center">
+                    {% for msg in messages%}
+                    <div class="alert alert-success" role="alert">
+                            {{msg}} <a href="#" class="alert-link"></a>
+                      </div>
+                    {% endfor%}
+                    <p>{{request.user.bio}}</p>
+         
+                </div>
+        <div class="row">
+          <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                            <li class="nav-item">
+   
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                                  <i class="fa fa-address-card-o"></i>
+                                    Information
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                  <i class="material-icons">favorite</i>
+                                    Images
+                                </a>
+                            </li>
+                          </ul>
+                        </div>
+            </div>
+            </div>
+
+          <div class="tab-content tab-space">
+            <div class="tab-pane active text-center gallery" id="studio">
+          <div class="row">
+            <div class="col-md-3 ml-auto">
+            </div>
+            <div class="col-md-3 mr-auto">
+            
+            </div>
+          </div>
+        </div>
+            <div class="tab-pane text-center gallery" id="works">
+            <div class="row">
+  
+  
+        
+  
+              <div class="col-md-4 mr-auto">
+                <center>
+                    <ul>
+                      <li><strong>Gender</strong></li><span>{{request.user.gender}}</span>
+                      <hr>
+                      <li><strong>Birthday</strong></li><span>{{request.user.birthday}}</span>
+                      <hr>
+                      <li><strong>Hobby</strong></li><span>{{request.user.hobby}}</span>
+                    </ul>
+                </center>
+                  </div>
+            </div>
+        </div>
+            <div class="tab-pane text-center gallery" id="favorite">
+            <div class="row">
+                <div class="d-flex justify-content-between flex-wrap" >
+                            
+                        {% for post in user1 %}
+                        {% if  post.image %}
+                            <a href="{% url 'main:post-details' post.pk%}"><img src="{{post.image.url}}" style="width: 13em; height: 10em; margin: 4;"onerror="this.parentElement.innerHTML = '';"  ></a>
+                        {%endif %}
+            
+                    {% endfor %}
+
+          </div>
+          </div>
+  
+        
+            </div>
+        </div>
+  </div>
+  
+  <footer class="footer text-center ">
+    
+    </footer>
+  
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+  
+  
+   
+  
+  </body> -->
+  {% block content %} 
+
+  <style>
+      html{
+          font-family: "Rubik",sans-serif;
+      }
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.wrapper {
+  width: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 70vh;
+  padding: 50px 20px;
+  padding-top: 10px;
+  
+
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 10px;
+  }
+}
+
+.profile-card {
+  width: 100%;
+  min-height: 460px;
+  margin: auto;
+  box-shadow: 0px 8px 60px -10px rgba(13, 28, 39, 0.6);
+  background: #fff;
+  border-radius: 12px;
+  max-width: 700px;
+  position: relative;
+}
+.profile-card.active .profile-card__cnt {
+  filter: blur(6px);
+}
+.profile-card.active .profile-card-message,
+.profile-card.active .profile-card__overlay {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+.profile-card.active .profile-card-form {
+  transform: none;
+  transition-delay: 0.1s;
+}
+.profile-card__img {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 4;
+  box-shadow: 0px 5px 50px 0px #1d1b31, 0px 0px 0px 7px rgba(13, 28, 39, 0.6);
+}
+@media screen and (max-width: 576px) {
+  .profile-card__img {
+    width: 120px;
+    height: 120px;
+  }
+}
+.profile-card__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-card__cnt {
+  margin-top: -35px;
+  text-align: center;
+  padding: 0 20px;
+  padding-bottom: 40px;
+  transition: all 0.3s;
+}
+.profile-card__name {
+  font-weight: 700;
+  font-size: 24px;
+  color: #19b3d3;
+  margin-bottom: 15px;
+}
+.profile-card__txt {
+  font-size: 18px;
+  font-weight: 500;
+  color: #324e63;
+  margin-bottom: 15px;
+}
+.profile-card__txt strong {
+  font-weight: 700;
+}
+.profile-card-loc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+.profile-card-loc__icon {
+  display: inline-flex;
+  font-size: 27px;
+  margin-right: 10px;
+}
+.profile-card-inf {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 35px;
+}
+.profile-card-inf__item {
+  padding: 10px 35px;
+  min-width: 150px;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-inf__item {
+    padding: 10px 20px;
+    min-width: 120px;
+  }
+}
+.profile-card-inf__title {
+  font-weight: 700;
+  font-size: 27px;
+  color: #324e63;
+}
+.profile-card-inf__txt {
+  font-weight: 500;
+  margin-top: 7px;
+}
+.profile-card-social {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile-card-social__item {
+  display: inline-flex;
+  width: 55px;
+  height: 55px;
+  margin: 15px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: #405de6;
+  box-shadow: 0px 7px 30px rgba(43, 98, 169, 0.5);
+  position: relative;
+  font-size: 21px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-social__item {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .profile-card-social__item:hover {
+    transform: scale(1.2);
+  }
+}
+.profile-card-social__item.facebook {
+  background: linear-gradient(45deg, #3b5998, #0078d7);
+  box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
+}
+.profile-card-social__item.twitter {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7);
+}
+.profile-card-social__item.instagram {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+}
+.profile-card-social__item.behance {
+  background: linear-gradient(45deg, #1769ff, #213fca);
+  box-shadow: 0px 4px 30px rgba(27, 86, 231, 0.7);
+}
+.profile-card-social__item.github {
+  background: linear-gradient(45deg, #333333, #626b73);
+  box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
+}
+.profile-card-social__item.codepen {
+  background: linear-gradient(45deg, #324e63, #414447);
+  box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6);
+}
+.profile-card-social__item.link {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
+}
+.profile-card-social .icon-font {
+  display: inline-flex;
+}
+.profile-card-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-ctr {
+    flex-wrap: wrap;
+  }
+}
+.profile-card__button {
+  background: none;
+  border: none;
+  font-family: "Rubik", sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  margin: 15px 35px;
+  padding: 15px 40px;
+  min-width: 201px;
+  border-radius: 50px;
+  min-height: 55px;
+  color: #fff;
+  cursor: pointer;
+  backface-visibility: hidden;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card__button {
+    min-width: 170px;
+    margin: 15px 25px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card__button {
+    min-width: inherit;
+    margin: 0;
+    margin-bottom: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  .profile-card__button:last-child {
+    margin-bottom: 0;
+  }
+}
+.profile-card__button:focus {
+  outline: none !important;
+}
+@media screen and (min-width: 768px) {
+  .profile-card__button:hover {
+    transform: translateY(-5px);
+  }
+}
+.profile-card__button:first-child {
+  margin-left: 0;
+}
+.profile-card__button:last-child {
+  margin-right: 0;
+}
+.profile-card__button.button--blue {
+  background: linear-gradient(45deg, #1da1f2, #0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4);
+}
+.profile-card__button.button--blue:hover {
+  box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75);
+}
+.profile-card__button.button--orange {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+}
+.profile-card__button.button--orange:hover {
+  box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+}
+.profile-card__button.button--gray {
+  box-shadow: none;
+  background: #dcdcdc;
+  color: #142029;
+}
+.profile-card-message {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 130px;
+  padding-bottom: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.profile-card-form {
+  box-shadow: 0 4px 30px rgba(15, 22, 56, 0.35);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background: #fff;
+  border-radius: 10px;
+  padding: 35px;
+  transform: scale(0.8);
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 768px) {
+  .profile-card-form {
+    max-width: 90%;
+    height: auto;
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form {
+    padding: 20px;
+  }
+}
+.profile-card-form__bottom {
+  justify-content: space-between;
+  display: flex;
+}
+@media screen and (max-width: 576px) {
+  .profile-card-form__bottom {
+    flex-wrap: wrap;
+  }
+}
+.profile-card textarea {
+  width: 100%;
+  resize: none;
+  height: 210px;
+  margin-bottom: 20px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 15px 20px;
+  color: #324e63;
+  font-weight: 500;
+  font-family: "Rubik", sans-serif;
+  outline: none;
+  transition: all 0.3s;
+}
+.profile-card textarea:focus {
+  outline: none;
+  border-color: #8a979e;
+}
+.profile-card__overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(22, 33, 72, 0.35);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.picture img{
+    display: inline-block;
+    grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+    grid-gap:2rem;
+    align-items: center;
+    margin: 3px;
+    border:3px solid #19b3d3;
+
+}
+.row {
+    display: inline-block;
+    background: white;
+    padding:1px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .40s;
+    max-width: 30em;
+
+
+}
+.text_yern {
+    background-color: #1d1b31;
+    color: white;
+    padding: 10px 10px;
+    border: 5px solid white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+
+    
+}
+strong {
+    color: #19b3d3;
+}
+.delete{
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 30px;
+  color: red;
+}
+.set-up {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30px;
+
+}
+
+  </style>
+
+  <div class="wrapper">
+    <div class="profile-card js-profile-card">
+      <div class="profile-card__img">
+        {%if user.avatar%}
+        <img class="round" src="{{request.user.avatar.url}}" alt="user" />
+        {% else %}
+        {% load static %}
+        <img src="{% static 'images/avatar.png' %}" />
+
+    {%endif%}
+      </div>
+  
+      <div class="profile-card__cnt js-profile-cnt">
+          
+        <div class="profile-card__name">{{request.user.name}} {{request.user.last_name}}
+          {% if request.user%}
+          <div class="">
+              <a class="set-up" href="/set-up" ><i class='bx bx-edit-alt' ></i></a>
+          </div>
+      {% endif %}
+        <a  class = "delete" href="{% url 'main:user-delete' user.id %}"><i class='bx bxs-trash'></i></a>
+        </div>
+        <p style="opacity: 70%;">{{request.user.age}} years old</p>
+        <div class="profile-card__txt"><p>{{request.user.bio}}</p></div>
+        <div class="profile-card-loc">
+          <span class="profile-card-loc__icon">
+            <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+          </span>
+               
+        </div> 
+        {%for msg in messages%}
+        <div class="alert alert-success" role="alert">
+        <strong>{{msg}}</strong>
+          </div>
+        {%endfor%}
+        {% if request.user.gender%}
+        <div class="text_yern">
+          <i class='bx bx-male-female'></i>
+            <strong>Gender</strong> {{request.user.gender}}
+        </div>
+        {% endif %}
+        {% if request.user.location %}
+        <div class="text_yern">
+            <i class='bx bx-home-alt-2' ></i>
+            <strong>Lives in</strong> {{request.user.location}}
+        </div>
+        {% endif %}
+        {% if request.user.school%}
+        <div class="text_yern">
+            <i class='bx bxs-graduation' ></i>
+            <strong>Studied at</strong> {{request.user.school}}
+        </div>
+        {% endif %}
+        {% if request.user.status%}
+        <div class="text_yern">
+            <i class='bx bxs-heart'></i>
+            <strong>Status</strong> {{request.user.status}}
+        </div>
+        {% endif %}
+        
+        
+    
+
+    
+
+   
+  
+        <div class="profile-card-inf">
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">Coming</div>
+            <div class="profile-card-inf__txt">Followers</div>
+          </div>
+  
+          <div class="profile-card-inf__item">
+            <div class="profile-card-inf__title">Soon!</div>
+            <div class="profile-card-inf__txt">Following</div>
+          </div>
+  
+
+        </div>
+        <div class="picture">
+            <div class="profile-card__name">Upload Photos</div>
+            
+            {% for post in user1 %}
+            <div class="row">
+            
+              
+            <div class="upload">
+              {% if post.image.count > 0 %}
+              <div class="row">
+                {% for img in post.image.all %}
+                  <div class="col-md-4 col-xs-12">
+                    <a href = "{% url 'main:post-details' post.pk %}"><img src="{{img.image.url}}" class="img-responsive"  onerror="this.onerror=null; this.remove();" width="400"></a>
+                  </div>
+                  {% endfor %}
+              </div>
+            {% endif %}
+            </div>
+               
+                {% endfor%}
+        </div>
+        </div>
+        <div class="profile-card-social">
+          {% if request.user.fb_url %}  
+            <h4>Social Media:</h4>
+               
+            <a href="{{request.user.fb_url}}" class="profile-card-social__item facebook">
+            <span class="icon-font">
+
+                <i class='bx bxl-facebook-square'></i>
+            </span>
+          </a>
+          {%endif %}
+          {% if request.user.insta_url %}            
+          <a href="{{request.user.insta_url}}" class="profile-card-social__item instagram">
+            <span class="icon-font">
+                <i class='bx bxl-instagram-alt' ></i>
+            </span>
+          </a>
+          {% endif %}
+          {% if request.user.twitter_url %}
+            <a href="{{request.user.twitter_url}}" class="profile-card-social__item twitter" >
+         
+            <span class="icon-font">
+                <i class='bx bxl-twitter'></i>
+            </span>
+          </a>
+          {%endif%} 
+  
+      
+          
+
+    
+        </div>
+  
+        <!-- <div class="profile-card-ctr">
+          <button class="profile-card__button button--blue js-message-btn">Message</button>
+          <button class="profile-card__button button--orange">Follow</button>
+        </div> -->
+      </div>
+  
+   
+  
+ 
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

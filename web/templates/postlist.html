@@ -1,0 +1,491 @@
+{% extends 'home_login.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+  
+
+.panel {
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+.panel-body {
+  padding: -10px;
+}
+
+.profile-pic {
+  margin: 20px 0 0 0;
+}
+
+.profile-pic img {
+  border: 7px solid #e5e6ea;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, .h1 {
+  font-size: 1.375em;
+}
+
+p {
+  font-size: 12px;
+}
+
+.profile-info .connect {
+  margin: 15px 0 5px 0;
+}
+
+.profile-info .connect button {
+  margin-right: 15px;
+}
+
+.btn-success.btn-trans {
+  color: #27b6af;
+  background-color: transparent;
+  border: solid thin #27b6af;
+}
+
+.btn-primary.btn-trans {
+  color: #556b8d;
+  background-color: transparent;
+  border: solid thin #556b8d;
+}
+
+.social {
+  margin: 0;
+  padding: 0;
+}
+
+.social ul {
+  margin: 0;
+  padding: 5px;
+}
+
+.social ul li {
+  margin: 5px;
+  list-style: none outside none;
+  display: inline-block;
+}
+
+.social i {
+  width: 70px;
+  height: 70px;
+  color: #FFF;
+  background-color: #909AA0;
+  font-size: 22px;
+  text-align: center;
+  padding-top: 12px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  -webkit-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  -ms-transition: all ease 0.3s;
+}
+
+.timeline-post-to textarea {
+  min-height: 80px;
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border: 2px solid #e8ebed;
+  border-radius: 2px;
+  box-shadow: none;
+  height: 37px;
+  padding: 8px 12px 9px 12px;
+}
+.social-feed-separated .social-feed-box {
+  margin-left: 1px;
+}
+.social-feed-separated .social-avatar {
+  float: left;
+  padding: 0;
+}
+.social-feed-separated .social-avatar img {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #e7eaec;
+}
+.social-feed-separated .social-feed-box .social-avatar {
+  padding: 15px 15px 0 15px;
+  float: none;
+
+}
+.social-feed-box {
+  /*padding: 15px;*/
+  border: 1px solid #e7eaec;
+  background: #fff;
+  margin-bottom: 15px;
+}
+.article .social-feed-box {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.article .social-feed-box:last-child {
+  margin-bottom: 0;
+  border-bottom: 1px solid #e7eaec;
+}
+.article .social-feed-box p {
+  font-size: 13px;
+  line-height: 18px;
+}
+.social-action {
+  margin: 15px;
+}
+.social-avatar {
+  padding: 15px 15px 0 15px;
+}
+.social-comment .social-comment {
+  margin-left: 45px;
+}
+.social-avatar img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.social-avatar .media-body a {
+  font-size: 14px;
+  display: block;
+}
+.social-body {
+  padding: 30px;
+
+}
+.social-body img {
+  margin-bottom: 10px;
+}
+.social-footer {
+  border-top: 1px solid #e7eaec;
+  padding: 10px 15px;
+  background: #f9f9f9;
+}
+.social-footer .social-comment img {
+  width: 32px;
+  margin-right: 10px;
+}
+.social-comment:first-child {
+  margin-top: 0;
+}
+.social-comment {
+  margin-top: 15px;
+}
+.social-comment textarea {
+  font-size: 12px;
+}
+
+
+.form-control, .single-line {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+.ibox.collapsed .ibox-content {
+  display: none;
+}
+.ibox.collapsed .fa.fa-chevron-up:before {
+  content: "\f078";
+}
+.ibox.collapsed .fa.fa-chevron-down:before {
+  content: "\f077";
+}
+.ibox:after,
+.ibox:before {
+  display: table;
+}
+.ibox-title {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ffffff;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 3px 0 0;
+  color: inherit;
+  margin-bottom: 0;
+  padding: 14px 15px 7px;
+  min-height: 48px;
+}
+.ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+.ibox-footer {
+  color: inherit;
+  border-top: 1px solid #e7eaec;
+  font-size: 90%;
+  background: #ffffff;
+  padding: 10px 15px;
+}
+.text_area{
+
+  white-space: normal;
+  word-wrap: break-word;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+.image-container img{
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+.image-item {
+  width: 159px;
+}
+.search_panel {
+  padding: 5px;
+  top: 100%;
+  position: relative;
+  width: 100%;
+  top: -20px;
+
+}
+
+
+    </style>
+	<meta charset="UTF-8">
+	<title>Posting</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-md-7">
+            <section class="panel">
+                <div class="panel-body profile-wrapper">
+                    <div class="col-md-3">
+                      <a href="/login/home-login/">Go back</a>
+                        <div class="profile-pic text-center">
+                            <img src="{{request.user.avatar.url}}" alt="" class="img-circle">
+                        </div>
+                    </div>
+           
+                    <div class="col-md-9">
+                        <div class="profile-info">
+                    
+                  
+                            <h1>{{request.user.name}}</h1>
+                            <span class="text-muted"></span>
+                            <p>
+                                {{request.user.bio}}
+                            </p>
+                       
+                            <div class="social">
+                                <ul>
+                                  {% if request.user.fb_url %}        
+                                  <a href="{{request.user.fb_url}}" class="profile-card-social__item facebook">
+                                  <span class="icon-font">
+                      
+                                      <i class='bx bxl-facebook-square'></i>
+                                  </span>
+                                </a>
+                                {%endif %}
+                                {% if request.user.insta_url %}            
+                                <a href="{{request.user.insta_url}}" class="profile-card-social__item instagram">
+                                  <span class="icon-font">
+                                      <i class='bx bxl-instagram-alt' ></i>
+                                  </span>
+                                </a>
+                                {% endif %}
+                                {% if request.user.twitter_url %}
+                                  <a href="{{request.user.twitter_url}}" class="profile-card-social__item twitter" >
+                               
+                                  <span class="icon-font">
+                                      <i class='bx bxl-twitter'></i>
+                                  </span>
+                                </a>
+                                {%endif%} 
+                      
+        
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-5">
+            <section class="panel  timeline-post-to">
+                <div class="panel-body">
+                <form method="GET" action= "{% url 'main:search-post'%}">
+                  {% csrf_token %}
+                  <div class="search_panel">
+                    <i class='bx bx-search'></i>
+                     
+                      <input class="" name= "search_post" type="search" placeholder="Search Post..">
+          
+                  </div>
+                </form>
+            
+                  
+                    <form role="form" method="POST" enctype="multipart/form-data">
+                        {%csrf_token %}
+                
+                          {{form.post}}
+                          <div class="row">
+                              <div class="col-sm-6">
+                                  {{form.image}}
+                                  <!-- <a class="btn btn-sm btn-default"><i class="fa fa-video-camera"></i></a>
+                                  <a class="btn btn-sm btn-default"><i class="fa fa-music"></i></a>
+                                  <a class="btn btn-sm btn-default"><i class="fa fa-map-marker"></i></a> -->
+                              </div>
+                              <div class="col-sm-6 text-right">
+                                  <button type="submit" class="btn btn-primary">Post</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                
+          
+
+            </section> 
+                
+          {% for post in post_list %}
+          <div class="social-feed-box" style="display: block;" >
+
+            <div class="pull-right social-action dropdown">
+                <button data-toggle="dropdown" >
+
+                  <i class='bx bx-dots-vertical'></i>
+                </button>
+                <ul class="dropdown-menu m-t-xs">
+                    {% if request.user == post.author %}
+                    <li><a href="{% url 'main:post-edit' post.pk%}" ><i class='bx bx-edit-alt' ></i>Edit Caption</a></li>
+                    {% endif %}
+                
+                    <li><a href="{% url 'main:post-details' post.pk  %}"><i class='bx bx-message-square-dots' ></i>Add Comment</a></li>
+                    {% if request.user == post.author%}
+                    <li><a href="{% url 'main:post-delete' post.pk%}""><i class='bx bx-trash'></i>Delete</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+          
+                <div class="media-body">
+                    {% if post.shared_user %}
+                    <div class="social-avatar">
+                      <a href="{% url 'main:post-details' post.pk %}" class="pull-left">
+                          <img alt="image" src="{{post.shared_user.avatar.url}}" style="border-radius: 10em; ">
+                      </a>
+                    </div>
+              
+                    <a href="{% url 'main:post-details' post.pk %}">
+                      <h5>{{post.shared_user.name}}</h5> 
+                      </a>
+                      <small class="text-muted">{{post.shared_on}}</small>
+                      <br>
+                      <i>shared a post</i>
+                  </div>
+                    {% else %}
+                    <div class="social-avatar">
+        
+                      <a href="{% url 'main:post-details' post.pk %}" class="pull-left">
+                          <img alt="image" src="{{post.author.avatar.url}}" style="border-radius: 10em; ">
+                      </a>
+                    </div>
+                    
+                    <a href="{% url 'main:post-details' post.pk %}">
+                    <h5>{{post.author.name}}</h5> 
+                    </a>
+                    <small class="text-muted">{{post.created_on}}</small>
+                  
+                </div>
+                {% endif %}
+            </div>
+            <div class="social-body" >
+            <div class="text_area">
+              {% if post.shared_body %}
+              <div class="position-relative border-bottom mb-3">
+
+                 {{post.shared_body}}
+ 
+              </div>
+              <div class="shared-post">
+                <div class="social-avatar">
+                  <a href="{% url 'main:post-details' post.pk %}" class="pull-left">
+                      <img alt="image" src="{{post.author.avatar.url}}" style="border-radius: 10em; " >
+                  </a>
+                </div>
+          
+                <a href="{% url 'main:post-details' post.pk %}">
+                  <h5>{{post.author.name}}</h5> 
+                  </a>
+                  <small class="text-muted">{{post.created_on}}</small>
+                
+              </div>
+              {% endif %}
+    
+              {{post.post}}
+
+            </div>
+            {% if post.image.count > 0 %}
+              <div class="row">
+                {% for img in post.image.all %}
+                  <div class="images-container">
+                    <div class="image-item">
+                      <a href = "{% url 'main:post-details' post.pk %}"><img src="{{img.image.url}}" class="img-responsive"  onerror="this.onerror=null; this.remove();"  style="margin-left: 25px;"/></a>
+                    </div>
+                   
+                  </div>
+                  {% endfor %}
+              </div>
+            {% endif %}
+            </div>
+            {% endfor %}
+        </div>       
+	</div>
+</div>
+</body>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock content%}
+
+
+
+

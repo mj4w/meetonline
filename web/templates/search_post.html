@@ -1,0 +1,53 @@
+{% extends 'home_login.html'%}
+
+{% block content %}
+<style>
+    div .row {
+        display: flex;
+        justify-content: center;
+    }
+.image-responsive {
+
+        display: grid;
+        margin: auto;
+        width: 60%;
+        justify-content: center;
+
+
+        
+
+    }
+</style>
+<link rel="preconnect " href="https://fonts.gstatic.com" crossorigin>
+<h2>Search Result...</h2>
+{% for searchs in search %}
+
+{% if not search %}
+    <h2>No Result Found</h2>
+{% else %}
+
+        <div class="box">
+            <img src="{{searchs.author.avatar.url}}" alt="image">
+            <h3>{{searchs.author.name}}</h3>
+            <p>{{searchs.post}}</p>
+            {% if searchs.image.count > 0 %}
+            <div class="row">
+              {% for img in searchs.image.all %}
+                <div class="images-container">
+                  <div class="image-item">
+                    <a href = "{% url 'main:post-details' searchs.pk %}"><img src="{{img.image.url}}" class="img-responsive"  onerror="this.onerror=null; this.remove();"  style="margin-left: 25px;"/></a>
+                  </div>
+                 
+                </div>
+                {% endfor %}
+            </div>
+          {% endif %}
+
+            <a href="{% url 'main:post-details' searchs.pk %}" class="btn">See Post</a>
+
+        </div>
+
+{% endif %}
+{% endfor %}
+{% endblock content%}
+

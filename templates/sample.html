@@ -1,0 +1,323 @@
+{% extends 'home_login.html '%}
+{% block content %}
+<style>
+    :root {
+  --body-bg: ;
+  --msger-bg: #fff;
+  --border: 2px solid #ddd;
+  --left-msg-bg: #ececec;
+  --right-msg-bg: #579ffb;
+}
+
+
+.msger {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  margin: 100%;
+  height: calc(100% - 50px);
+  border: var(--border);
+  border-radius: 5px;
+  background: var(--msger-bg);
+  box-shadow: 0 15px 15px -5px rgba(255, 255, 255, 0.2);
+  max-height: 100%;
+}
+
+.msger-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: var(--border);
+  background: #eee;
+  color: #666;
+}
+
+.msger-chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+.msger-chat::-webkit-scrollbar {
+  width: 6px;
+}
+.msger-chat::-webkit-scrollbar-track {
+  background: #ddd;
+}
+.msger-chat::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+}
+.msg {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+.msg:last-of-type {
+  margin: 0;
+}
+.msg-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  background: #ddd;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+.msg-bubble {
+  max-width: 450px;
+  padding: 20px;
+  border-radius: 15px;
+  background: var(--left-msg-bg);
+}
+.msg-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.msg-info-name {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.msg-info-time {
+  font-size: 0.85em;
+}
+
+.left-msg .msg-bubble {
+  border-bottom-left-radius: 0;
+}
+
+.right-msg {
+  flex-direction: row-reverse;
+}
+.right-msg .msg-bubble {
+  background: var(--right-msg-bg);
+  color: #fff;
+  border-bottom-right-radius: 0;
+}
+.right-msg .msg-img {
+  margin: 0 0 0 10px;
+
+}
+
+.msger-inputarea {
+  display: flex;
+  padding: 10px;
+  border-top: var(--border);
+  background: #eee;
+}
+.msger-inputarea * {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1em;
+}
+.msger-input {
+  flex: 1;
+  background: #ddd;
+}
+.msger-send-btn {
+  margin-left: 10px;
+  background: rgb(0, 196, 65);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.23s;
+}
+.msger-send-btn:hover {
+  background: rgb(0, 180, 50);
+}
+
+.msger-chat {
+  background-color: #fcfcfe;
+
+}
+.msg-text{
+  inline-size: 150px;
+  overflow-wrap:break-word;
+}
+</style>
+<section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <i class="fas fa-comment-alt"></i>
+		{% if thread.receiver == request.user %}
+		<img src="{{thread.user.avatar.url}}" class="msg-img">
+		<h5 >{{ thread.user }}</h5>
+		{% else %}
+		<img src="{{thread.receiver.avatar.url}}" class="msg-img" >
+		<h5 >{{ thread.receiver }}</h5>
+		{% endif %}
+
+      </div>
+      <div class="msger-header-options">
+        <span><i class="fas fa-cog"></i></span>
+      </div>
+    </header>
+
+    <main class="msger-chat">
+{% for message in message_list %}
+	<div>
+
+
+  {% if message.receiver_user == request.user %}
+
+      <div class="msg left-msg">
+        {% if thread.receiver == request.user %}
+        <img src="{{thread.user.avatar.url}}" class="msg-img">
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">{{thread.user}}</div>
+            <div class="msg-info-time">{{message.date}}</div>
+          </div>
+
+        {% else %}
+        <img src="{{thread.receiver.avatar.url}}" class="msg-img" >
+
+        {% endif %}
+
+
+     
+
+   
+  
+          <div class="msg-text">
+          {% if message.image %}
+            <div class="message-container ms-auto">
+              <img src="{{ message.image.url }}" width="100"/>
+
+            </div>
+          {% endif %}
+            {{message.body}}
+
+
+
+          </div>
+        </div>
+      </div>
+
+	{% elif message.sender == request.user%}
+
+      <div class="msg right-msg">
+		  <img src="{{message.sender.avatar.url}}" class="msg-img" / >
+  
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">{{request.user.name}}</div>
+            <div class="msg-info-time">{{message.date}}</div>
+          </div>
+  
+          <div class="msg-text" >
+          {% if message.image %}
+            <div class="message-container ms-auto">
+              <img src="{{ message.image.url }}" width="100"/>
+
+            </div>
+          {% endif %} 
+            {{message.body}}
+          </div>
+        </div>
+
+      </div>
+ 
+	  {% endif %}
+
+{% endfor %}
+	  </div>
+
+    </main>
+
+  
+	<form method="POST" action="{% url 'main:create-message' thread.pk %}" enctype="multipart/form-data" class="msger-inputarea">
+		{% csrf_token %}
+      {{form}}
+      <button type="submit" class="msger-send-btn">Send</button>
+    </form>
+  </section>
+
+{% endblock content %}
+
+
+
+
+
+
+
+<!-- <style>
+
+    .empty-text{
+        color: #777;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .sent-message {
+        background-color: #ffc2c2;
+        border-radius: 30px;
+        padding: 10px 25px;
+        width: 25%;
+
+    }
+    .received-message{
+        background-color: rgb(41, 203, 252);
+        color: #fff;
+        border-radius: 30px;
+        padding: 10px 25px;
+        width: 25%;
+        float: right;
+    }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="container">
+	<div class="row">
+		<div class="card col-md-12 mt-5 p-3 shadow-sm">
+			{% if thread.receiver == request.user %}
+				<span><img src="{{thread.user.avatar.url}}" alt="" width="50" style="border-radius: 10em;" height="50"/></span>
+				<h5>{{ thread.user }}</h5>
+			{% else %}
+				<span><img src="{{thread.receiver.avatar.url}}" alt="" width="50" style="border-radius: 10em;" height="50"/></span>
+				<h5>@{{ thread.receiver }}</h5>
+			{% endif %}
+		</div>
+	</div>
+
+	{% if message_list.all.count == 0 %}
+	<div class="row my-5">
+		<div class="col-md-12">
+			<p class="empty-text">No Messages</p>
+		</div>
+	</div>
+	{% endif %}
+
+	{% for message in message_list %}
+	<div class="row">
+		<div class="col-md-12 my-1">
+			{% if message.sender == request.user %}
+				<div class="sent-message my-3">
+					<img src="{{request.user.avatar.url}}" alt="" width="50" style="border-radius: 10em;" height="50"/>
+					<p>{{ message.body }}</p>
+				</div>
+			{% elif message.receiver_user == request.user %}
+				<div class="received-message my-3">
+					<p>{{ message.body }}</p>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+	{% endfor %}
+
+	<div class="row">
+		<div class="card col-md-12 p-3 shadow-sm">
+			<form method="POST" action="{% url 'main:create-message' thread.pk %}" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form }}
+
+				<div class="d-grid gap-2 mt-3">
+					<button class="btn btn-light" type="submit">Send Message</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div> -->

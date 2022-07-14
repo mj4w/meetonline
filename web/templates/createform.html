@@ -1,0 +1,207 @@
+
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Create Information</title>
+        <meta charset="UTF-8">
+        <meta name = 'viewport' content="width=device-width, initial-scale = 1.0">
+
+    </head>
+    <style>
+        .form-style-3{
+	max-width: 450px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.form-style-3 label{
+	display:block;
+	margin-bottom: 10px;
+}
+.form-style-3 label > span{
+	float: left;
+	width: 100px;
+	font-weight: bold;
+	font-size: 13px;
+    box-sizing: border-box;
+
+    
+}
+.form-style-3 fieldset{
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin: 0px 0px 10px 0px;
+	border: 1px solid #FFD2D2;
+	padding: 20px;
+    background: #ff3772;
+}
+.form-style-3 fieldset legend{
+    font-family: sans-serif;
+	color: #ff3772;
+	border-top: 1px solid #FFD2D2;
+	border-left: 1px solid #FFD2D2;
+	border-right: 1px solid #FFD2D2;
+	border-radius: 5px 5px 0px 0px;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	background: #FFF4F4;
+	padding: 0px 8px 3px 8px;
+	box-shadow: -0px -1px 2px #F1F1F1;
+	-moz-box-shadow:-0px -1px 2px #F1F1F1;
+	-webkit-box-shadow:-0px -1px 2px #F1F1F1;
+	font-weight: normal;
+	font-size: 12px;
+}
+.form-style-3 textarea{
+	width:250px;
+	height:100px;
+}
+.form-style-3 input[type=text],
+.form-style-3 input[type=date],
+.form-style-3 input[type=datetime],
+.form-style-3 input[type=number],
+.form-style-3 input[type=search],
+.form-style-3 input[type=time],
+.form-style-3 input[type=url],
+.form-style-3 input[type=email],
+.form-style-3 select, 
+.form-style-3 textarea{
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border: 1px solid #FFC2DC;
+	outline: none;
+	padding: 5px 8px 5px 8px;
+
+	width:50%;
+}
+
+.required{
+	color:red;
+	font-weight:normal;
+}
+.form-style-3 {
+    width: 100%;
+    max-width: 800px;
+    background: black;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
+.input {
+    color: pink;
+    font-family: cursive;
+    box-sizing: border-box;
+}
+html {
+    background: black;
+}
+.bg {
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+.form-style-3  input[type=submit],
+.form-style-3  a{
+	background: #EB3B88;
+	border: 1px solid #C94A81;
+	padding: 0px 15px 2px 15px;
+	color: #FFCBE2;
+	box-shadow: inset -1px -1px 3px #FF62A7;
+	-moz-box-shadow: inset -1px -1px 3px #FF62A7;
+	-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
+	border-radius: 3px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;	
+	font-weight: bold;
+
+}
+    </style>
+    <body>
+        {% load static %}
+        <div class="bg">
+            <a href = "/login/home-login"><img src="{% static 'style/images/logo Mj.png' %}" width="100" alt="home" class="image"/></a>
+        </div>
+        
+        <div class="form-style-3">
+
+            <form method="POST">
+            {% csrf_token %}
+            <fieldset><legend>Personal Information</legend>
+            <label for="field1"><span>First Name<span class="required"></span></span>
+            <div class="input">
+                {{form.first_name}}
+            </div>
+            <label for="field1"><span>Last Name<span class="required"></span></span>
+                <div class="input">
+                    {{form.last_name}}
+                </div>
+            <label for="field2"><span>Username <span class="required"></span></span>
+                <div class="input">
+                    {{form.username}}
+                </div>
+            <label for="field3"><span>Gender<span class="required"></span></span>
+                <div class="input">
+                    {{form.gender}}
+                </div>
+            <label for="field3"><span>Birthday<span class="required"></span></span>
+                <div class="input">
+                    {{form.birthday}}
+                </div>
+            <label for="field3"><span>Address<span class="required"></span></span>
+                <div class="input">
+                {{form.address}}
+                </div>
+            <label for="field3"><span>Region<span class="required"></span></span>
+                <div class="input">
+                {{form.region}}
+                </div>
+            <label for="field3"><span>Religion<span class="required"></span></span>
+                <div class="input">
+                {{form.religion}}
+                </div>
+            <label for="field3"><span>Favorite Color<span class="required"></span></span>
+                <div class="input">
+                {{form.favorite_color}}
+                </div>
+            <label for="field3"><span>Hobby<span class="required"></span></span>
+                <div class="input">
+                {{form.hobby}}
+                </div>
+            </fieldset>
+            <fieldset><legend>About</legend>
+            <label for="field6"><span>Description<span class="required"></span></span>
+                <div class="input">
+                    {{form.bio}}
+                </div>
+
+            <label for="field6"><span>Fb link <span class="required"></span></span>
+                <div class="input">
+                    {{form.fb_url}}
+                </div>
+            
+            <label for="field6"><span>Instagram link <span class="required"></span></span>
+                <div class="input">
+                    {{form.insta_url}}
+                </div>
+            
+            <label for="field6"><span>Twitter link <span class="required"></span></span>
+                <div class="input">
+                    {{form.twitter_url}}
+                </div>
+            <label><span></span>
+               <button>Submit</button>
+            </label>
+            </fieldset>
+            </form>
+            </div>
+  
+    </body>
+</html>
+

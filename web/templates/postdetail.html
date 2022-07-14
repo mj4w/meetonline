@@ -1,0 +1,574 @@
+{% extends 'home_login.html'%}
+<!DOCTYPE html>
+<html lang="en">
+{% block content%}
+<head>
+
+    <style>
+ 
+
+.panel {
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+.profile-pic {
+  margin: 20px 0 0 0;
+}
+
+.profile-pic img {
+  border: 7px solid #e5e6ea;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, .h1 {
+  font-size: 1.375em;
+}
+
+p {
+  font-size: 12px;
+}
+
+.profile-info .connect {
+  margin: 15px 0 5px 0;
+}
+
+.profile-info .connect button {
+  margin-right: 15px;
+}
+
+
+.social {
+  margin: 0;
+  padding: 0;
+}
+
+.social ul {
+  margin: 0;
+  padding: 5px;
+}
+
+.social ul li {
+  margin: 5px;
+  list-style: none outside none;
+  display: inline-block;
+}
+
+.social i {
+  width: 70px;
+  height: 70px;
+  color: #FFF;
+  background-color: #909AA0;
+  font-size: 22px;
+  text-align: center;
+  padding-top: 12px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: all ease 0.3s;
+  -moz-transition: all ease 0.3s;
+  -webkit-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  -ms-transition: all ease 0.3s;
+}
+
+.timeline-post-to textarea {
+  min-height: 80px;
+  margin-bottom: 15px;
+}
+
+.form-control {
+  border: 2px solid #e8ebed;
+  border-radius: 2px;
+  box-shadow: none;
+  height: 37px;
+  padding: 8px 12px 9px 12px;
+}
+.social-feed-separated .social-feed-box {
+  margin-left: 62px;
+}
+.social-feed-separated .social-avatar {
+  float: left;
+  padding: 0;
+}
+.social-feed-separated .social-avatar img {
+  width: 52px;
+  height: 52px;
+  border: 1px solid #e7eaec;
+}
+.social-feed-separated .social-feed-box .social-avatar {
+  padding: 15px 15px 0 15px;
+  float: none;
+}
+.social-feed-box {
+  /*padding: 15px;*/
+  border: 1px solid #e7eaec;
+  background: #fff;
+  margin-bottom: 15px;
+}
+.article .social-feed-box {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.article .social-feed-box:last-child {
+  margin-bottom: 0;
+  border-bottom: 1px solid #e7eaec;
+}
+.article .social-feed-box p {
+  font-size: 13px;
+  line-height: 18px;
+}
+.social-action {
+  margin: 15px;
+}
+.social-avatar {
+  padding: 15px 15px 0 15px;
+}
+.social-comment .social-comment {
+  margin-left: 45px;
+}
+.social-avatar img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.social-avatar .media-body a {
+  font-size: 14px;
+  display: block;
+}
+.social-body {
+  padding: 15px;
+}
+.social-body img {
+  margin-bottom: 10px;
+}
+.social-footer {
+  border-top: 1px solid #e7eaec;
+  padding: 10px 15px;
+  background: #f9f9f9;
+}
+.social-footer .social-comment img {
+  width: 32px;
+  margin-right: 10px;
+}
+.social-comment:first-child {
+  margin-top: 0;
+}
+.social-comment {
+  margin-top: 15px;
+}
+.social-comment textarea {
+  font-size: 12px;
+}
+
+
+.form-control, .single-line {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-size: 14px;
+}
+
+
+.ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+}
+.ibox.collapsed .ibox-content {
+  display: none;
+}
+.ibox.collapsed .fa.fa-chevron-up:before {
+  content: "\f078";
+}
+.ibox.collapsed .fa.fa-chevron-down:before {
+  content: "\f077";
+}
+.ibox:after,
+.ibox:before {
+  display: table;
+}
+.ibox-title {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ffffff;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 3px 0 0;
+  color: inherit;
+  margin-bottom: 0;
+  padding: 14px 15px 7px;
+  min-height: 48px;
+}
+.ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+.ibox-footer {
+  color: inherit;
+  border-top: 1px solid #e7eaec;
+  font-size: 90%;
+  background: #ffffff;
+  padding: 10px 15px;
+}
+.text_area{
+
+white-space: normal;
+word-wrap: break-word;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+.image-container img{
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+}
+.image-item {
+  width: 159px;
+}
+.share {
+  width: 40%;
+  height: 200px;
+  position: relative;
+  top: 100px;
+}
+.bx-like{
+  position: absolute;
+  border: none;
+  cursor: pointer;
+
+  padding: 23px;
+
+}
+.bx-dislike {
+  position: absolute;
+  border: none;
+  left: 100px;
+
+}
+.media-body{
+
+
+white-space: normal;
+word-wrap: break-word;
+
+}
+.trash {
+  position: relative;
+  left: 100px;
+  top: -8px;
+}
+    </style>
+	<meta charset="UTF-8">
+	<title>Posting</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-md-7">
+            <section class="panel">
+                <div class="panel-body profile-wrapper">
+                    <div class="col-md-3">
+                        <div class="profile-pic text-center">
+
+                          <a href='{% url "main:see-info" post.author.pk  %}'><img src="{{post.author.avatar.url}}" alt="" class="img-circle"></a>  
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="profile-info">
+                            <h1>{{post.author.name}}</h1>
+                            <span class="text-muted"></span>
+                            <p>
+                                {{post.author.bio}}
+                            </p>
+                            <div class="connect">
+      
+                                <a href='{% url "main:see-info" post.author.pk  %}'><button type = "button" class="btn btn-danger ">Visit Profile</button></a>
+        
+                                <a href="/inbox/create-thread"><button type="button" class="btn btn-success btn-trans"> Chat</button></a>
+                  
+       
+                    
+          
+                            </div>
+                            <div class="social">
+                                <ul>
+                                  {% if post.author.fb_url %}        
+                                  <a href="{{post.author.fb_url}}" class="profile-card-social__item facebook">
+                                  <span class="icon-font">
+                      
+                                      <i class='bx bxl-facebook-square'></i>
+                                  </span>
+                                </a>
+                                {%endif %}
+                                {% if post.author.insta_url %}            
+                                <a href="{{post.author.insta_url}}" class="profile-card-social__item instagram">
+                                  <span class="icon-font">
+                                      <i class='bx bxl-instagram-alt' ></i>
+                                  </span>
+                                </a>
+                                {% endif %}
+                                {% if post.author.twitter_url %}
+                                  <a href="{{post.author.twitter_url}}" class="profile-card-social__item twitter" >
+                               
+                                  <span class="icon-font">
+                                      <i class='bx bxl-twitter'></i>
+                                  </span>
+                                </a>
+                                {%endif%} 
+                           
+        
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-5">
+            <section class="panel  timeline-post-to">
+                <div class="panel-body">
+                  
+    <div class="social-feed-box" style="display: block;">
+
+   
+      <div class="pull-right social-action dropdown">
+        <button data-toggle="dropdown" >
+
+          <i class='bx bx-dots-vertical'></i>
+        </button>
+        <ul class="dropdown-menu m-t-xs">
+            {% if request.user == post.author %}
+            <li><a href="{% url 'main:post-edit' post.pk%}" ><i class='bx bx-edit-alt' ></i>Edit Caption</a></li>
+            {% endif %}
+   
+            {% if request.user == post.author%}
+            <li><a href="{% url 'main:post-delete' post.pk%}""><i class='bx bx-trash'></i>Delete</a></li>
+            {% endif %}
+            <li><a href="/post-list"><i class='bx bx-arrow-back'></i>Go back</a></li>
+        </ul>
+    </div>
+      <div class="social-avatar">
+          <a href="" class="pull-left">
+              <img alt="image" src="{{post.author.avatar.url}}" style="border-radius: 10em;">
+          </a>
+          <div class="media-body">
+              <a href="#">
+                  <h5>{{post.author.name}}</h5>
+              </a>
+              <small class="text-muted">{{post.created_on}}</small>
+          </div>
+      </div>
+      <div class="social-body">
+  
+        <div class="text_area">
+          {{post.post}}
+
+
+        
+          {% if post.image.count > 0 %}
+          <div class="row">
+            {% for img in post.image.all %}
+              <div class="images-container">
+                <div class="image-item">
+                  <a href = "{% url 'main:post-details' post.pk %}"><img src="{{img.image.url}}" class="img-responsive"  onerror="this.onerror=null; this.remove();" /></a>
+                </div>
+               
+              </div>
+              {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      </div>
+      <div class="btn-group" >
+        <form method="POST" action = "{% url 'main:Like' post.pk%}">
+          {%csrf_token %}
+          <input type="hidden" name ="next" value="{{request.path}}">
+          <button type="submit" class="btn btn-primary btn-sm">
+          {% if post.likes.all.count == 0 %}
+          <i class="fa fa-thumbs-up" ><span> {{post.likes.all.count}}</span></i></button>
+          {% elif post.likes.all.count == 1%}
+            {% if request.user == user%}
+            <i class="fa fa-thumbs-up"><span> {{post.likes.all.count}} </span></i></button>
+            {%endif%}
+            {% else %}
+          <i class="fa fa-thumbs-up"><span> {{post.likes.all.count}} </span></i></button>
+          {%endif %}
+        </form>
+        
+        <form method="POST" action="{% url 'main:share-post' post.pk %}"  id="{{post.pk}}" style="width: 100%; font-size: 12px; position: relative; top: 40px; left: -160px; margin: 70px;">
+          {% csrf_token %}
+          {{share_form}}
+          <div>
+            <button type="submit" class="btn btn-success btn-sm">Share Now</button>
+          </div>
+        </form>
+      
+
+        
+
+    </div>
+      <div class="social-footer">
+          <div class="social-comment">
+            <form method="POST">
+              {% csrf_token %}
+              {{form.comment}}
+              <div class="col-sm-0 text-right">
+                <button type="submit" class="btn btn-secondary">Comment</button>
+            </div>
+              
+        
+      </form>
+      {% for comment in comments %}
+              <a href="" class="pull-left">
+                  <img alt="image" src="{{comment.author.avatar.url}}" style="border-radius: 4em; height: 2em;" >
+              </a>
+
+              <div class="media-body">
+                  <a href="{% url 'main:profile' user.id %}">
+                      {{comment.author.name}}
+                  </a>
+                  {{comment.comment}}
+                  <br>
+                  <small class="text-muted">{{comment.created_on}}</small>
+                  <form method="POST" action = "{% url 'main:comment-like' comment.pk%}">
+                    {%csrf_token %}
+                    <input type="hidden" name ="next" value="{{request.path}}">
+                    <button type="submit" class="edit">
+                      {% if comment.likes.all.count == 0 %}
+                      <i class="bx bx-like" ><span> {{comment.likes.all.count}}</span></i></button>
+                      {% elif comment.likes.all.count == 1%}
+                        {% if request.user == user%}
+                        <i class="bx bx-like"><span> {{comment.likes.all.count}} </span></i></button>
+                        {%endif%}
+                        {% else %}
+                      <i class="bx bx-like"><span> {{comment.likes.all.count}} </span></i></button>
+                      {%endif %}
+                  </form>
+                  <form method="POST" action = "{% url 'main:comment-dislike' comment.pk%}">
+                    {%csrf_token %}
+                    <input type="hidden" name ="next" value="{{request.path}}">
+                    <button type="submit" class="edit1">
+                      {% if comment.likes.all.count == 0 %}
+                      <i class="bx bx-dislike" ><span> {{comment.dislikes.all.count}}</span></i></button>
+                      {% elif comment.likes.all.count == 1%}
+                        {% if request.user == user%}
+                        <i class="bx bx-dislike"><span> {{comment.dislikes.all.count}} </span></i></button>
+                        {%endif%}
+                        {% else %}
+                      <i class="bx bx-dislike"><span> {{comment.dislikes.all.count}} </span></i></button>
+                      {%endif %}
+                  </form>
+           
+                  {% if request.user == comment.author%}
+                  <span class="trash">  <a href="{% url 'main:comment-delete' post.pk comment.pk%}" class="small"><i class="fa fa-trash" ></i>Delete</a></span>
+                
+                  {%endif%}
+              </div>
+              {%endfor%}
+          </div>
+
+	</div>
+
+</div>
+</body>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock content %}
+
+
+
+
+<!--                 
+
+  
+                                      <form method="POST" action = "{% url 'main:Dislike' post.pk%}">
+                                        {%csrf_token %}
+                                        <input type="hidden" name = "next" value="{{request.path}}">
+                                        <button style="background-color: transparent; border:none; box-shadow: none;" type="submit">
+                                          {% if post.dislikes.all.count == 0 %}
+                                          <i class="fa fa-thumbs-down"><span> {{post.dislikes.all.count}}</span></i></button>
+                                          {% elif post.dislikes.all.count == 1%}
+                                          <i class="fa fa-thumbs-down"><span> {{post.dislikes.all.count}} Disliked by person</span></i></button>
+                                          {% else %}
+                                          <i class="fa fa-thumbs-down"><span> {{post.dislikes.all.count}} Disliked by people</span></i></button>
+                                          {%endif %}
+
+                                        
+                                      </form>
+                                </div>
+   
+                                <hr>
+                                <div class="post-block__comments">
+                 
+                    
+                           
+                                    <div class="input-group mb-3">
+                           
+                     
+                                  {%  for comment in comments%}
+                                        <div class="d-flex mb-2">
+                                            <img src="{{comment.author.avatar.url}}" style="border-radius: 10em;" width="60" height = "60" alt="User img" class="author-img author-img--small mr-2">
+                                            <div>
+                                                <h6 class="mb-1"><a href="/see-info/{{post.author.id}}/" class="text-dark">{{comment.author}}</a> <small class="text-muted">{{comment.created_on}}</small></h6>
+                                                <p class="mb-1">{{comment.comment}}</p>
+                                                <div class="d-flex">
+                                                      <a href="" ><i class = "fa fa-mail-forward"></i>Reply</a>
+                                                    {% if request.user == comment.author%}
+                                                    <a href="" style="left: 10em;position: absolute;"><i class=""></i>Delete</a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                        {% endfor %}
+                                    </div>
+                                   -->
+        
+           
+
+
+
+
