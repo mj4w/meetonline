@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django_social_share',
     'django_heroku',
     'dj_database_url',
+    'web.User',
 
 
 ]
